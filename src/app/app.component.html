@@ -1,0 +1,77 @@
+<div *ngIf="topBarActive" class="absolution" style="display: flex;"> 
+  <div class="health1 health-bar-container">
+    <div [ngStyle]='{width: player1Health.width}' class="health-bar">{{player1}}&nbsp;{{player1Health.text && player1Health.text > 0 ? '(' +player1Health.text +')' : ''}}</div>
+    <div [ngStyle]='{width: breakAttack1.width}' style="height:12px;font-size: 10px;background-color: #fafafa;font-family: killer2;">
+      &nbsp;{{mode === 0 ? breakAttack1.text : ""}}
+    </div>
+  </div> 
+  <div class="title">
+    <h1 style="margin: 0!important;opacity: 0.5;background-color: white;font-family: Killer;font-size: 18px;">
+     IMMORTAL COMBATANTS
+    </h1> 
+    <button *ngIf="topBarOptionsActive" style="font-size: small;opacity: 0.5;font-weight: bolder;z-index: 3;" [innerHtml]="pauseButton" (click)="topBarOptions('PAUSE')" ></button>
+    <!-- <button *ngIf="topBarOptionsActive" style="font-size: small;opacity: 0.5;font-weight: bolder;z-index: 3;" [innerHtml]="fullscreenButton" (click)="fullscreen()" ></button> -->
+    <button *ngIf="topBarOptionsActive" style="font-size: small;opacity: 0.5;font-weight: bolder;z-index: 3;" [innerHTML]="menuButton" (click)="topBarOptions('HOME')"></button>
+  </div>
+  <div class="health2 health-bar-container">
+    <div [ngStyle]='{width: player2Health.width}' class="health-bar">{{player2}}&nbsp;{{player2Health.text && player2Health.text > 0 ? '(' +player2Health.text +')' : ''}}</div>
+    <div [ngStyle]='{width: breakAttack2.width}' style="height:12px;background-color: #fafafa;">
+      <!-- {{breakAttack2.text}} -->
+    </div>
+  </div>             
+</div>
+<div *ngIf="menuActive" class="absolution">
+<div style="text-align: center;">
+  <h1 style="margin: 0!important;opacity: 0.8;font-size:50px;background-color: white;font-family: Killer;">IMMORTAL COMBATANTS</h1>
+  <span class="header-text">Rank {{level}}</span> <br>
+  <span>
+  <select (change)="changeMenuOptions('PLAYER1',$event.target.value)" class="common-class">
+    <option value="{{player}}" *ngFor="let player of unlockedPlayers">{{player}}</option>
+  </select> 
+</span><br>
+<button (click)="changeMenuOptions('FIGHT')" style="margin: 0!important;opacity: 0.8;font-size:40px;background-color: white;font-family: Killer;">Fight!</button>
+<button (click)="changeMenuOptions('WATCH')" style="margin: 0!important;opacity: 0.8;font-size:40px;background-color: white;font-family: Killer;">Watch</button>
+<br>
+<button (click)="changeMenuOptions('SETTINGS')" style="margin: 0!important;opacity: 0.8;font-size:40px;background-color: white;font-family: Killer;">Settings</button>
+</div>        
+</div>
+<div class="absolution" *ngIf="promptActive" style="top:40%;text-align: center;font-family: Killer;font-size: 75px;color: #500202;">
+<span style="margin: 0!important;opacity: 0.9">{{promptMessage}}</span> 
+</div>
+<div  class="absolution" *ngIf="settingsActive" style="background: #000;opacity: 0.9;text-align: center;">
+<span style="margin: 0!important;opacity: 0.8;font-size:40px;color: white;font-family: Killer;">GRAPHICS</span>&nbsp;&nbsp;
+<button (click)="changeSettings('GRAPHICS')" style="margin: 0!important;opacity: 0.8;font-size:40px;background-color: white;font-family: Killer;">{{GRAPHICS}}</button><br>
+<span style="margin: 0!important;opacity: 0.8;font-size:40px;color: white;font-family: Killer;">DIFFICULTY</span>&nbsp;&nbsp;
+<button (click)="changeSettings('DIFFICULTY')" style="margin: 0!important;opacity: 0.8;font-size:40px;background-color: white;font-family: Killer;">{{DIFFICULTY}}</button><br>
+<span style="margin: 0!important;opacity: 0.8;font-size:40px;color: white;font-family: Killer;">SOUND</span>&nbsp;&nbsp;
+<button (click)="changeSettings('SOUNDDOWN')"  style="margin: 0!important;opacity: 0.8;font-size:40px;background-color: white;font-family: Killer;">-</button>
+<input type="number" style="margin: 0!important;opacity: 0.8;font-size:40px;max-width:50px;background-color: white;font-family: Killer;text-align: center;" [value]="SOUND_VOLUME">
+<button (click)="changeSettings('SOUNDUP')" style="margin: 0!important;opacity: 0.8;font-size:40px;background-color: white;font-family: Killer;">+</button>
+<br><br>
+<button (click)="changeSettings('SAVE')" style="margin: 0!important;opacity: 0.8;font-size:40px;background-color: white;font-family: Killer;">Save</button>
+<br>     
+</div>
+
+<div  class="absolution" *ngIf="statsActive" style="background: #000;opacity: 0.9;text-align: center;z-index: 10;">
+  <span style="margin: 0!important;opacity: 0.8;font-size:40px;color: white;font-family: Killer; color: #cf1313">Statistics</span><br><br>
+  <span style="margin: 0!important;opacity: 0.8;font-size:30px;color: white;font-family: Killer2;  color: #cf1313">{{wins ? 'You Win':'You lose'}}</span><br>
+  <span style="margin: 0!important;opacity: 0.8;font-size:30px;color: white;font-family: Killer2;">Your Health : {{healthBar? healthBar : 'Same as before'}}</span><br>
+  <span style="margin: 0!important;opacity: 0.8;font-size:30px;color: white;font-family: Killer2;">Damage Taken : {{damage}}</span><br>
+  <span *ngIf="newPlayer" style="margin: 0!important;opacity: 0.8;font-size:30px;color: white;font-family: Killer1;">New Player Unlocked : {{newPlayer}}</span><br>
+  <span *ngIf="newPlayer" style="margin: 0!important;opacity: 0.8;font-size:30px;color: white;font-family: Killer2;">LEVEL UP</span><br>  
+</div>
+
+<div *ngIf="loaderActive" class="loader-container absolution">
+<div [ngStyle]='{width: loadPercentage}' class="load-percent" [innerHtml]="loadProgress"></div>
+</div>   
+<div *ngIf="controlsActive" class="absolution" style="top:60%;opacity: 0.6;font-size: x-large;display: flex;
+justify-content: space-between;">
+<div id="JoyStick" style="left: 1%;width:30%;text-align: center;">
+</div>
+  
+<div style="right: 1%;width: 30%;text-align: center;">
+  <button style="width:50px;height: 50px;background-color: #FAFAFA; opacity: 0.5; border-radius: 50%;" (touchstart)="controller('Q')">◯</button> <br>
+<button style="width:50px;height: 50px;background-color: #FAFAFA; opacity: 0.5; border-radius: 50%;" (touchstart)="controller('F')">△</button>&nbsp;
+<button style="width:50px;height: 50px;background-color: #FAFAFA; opacity: 0.5; border-radius: 50%;"  (touchstart)="controller('E')">Ⅹ</button>
+</div>
+</div>

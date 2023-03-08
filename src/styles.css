@@ -1,0 +1,108 @@
+html,body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden !important;;
+  cursor:default;
+  background-image: url(assets/Background/menu.jfif);
+  box-sizing:border-box;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Fire fox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}*,*:before,*:after{box-sizing:inherit}
+
+  @font-face {
+  font-family: 'Killer';
+  src: url(assets/Fonts/ButcherTheBaker-R8RA.ttf);
+  }
+  @font-face {
+  font-family: 'Killer1';
+  src: url(assets/Fonts/RuneSlasherCondensed.otf);
+  }
+  @font-face {
+  font-family: 'Killer2';
+  src: url(assets/Fonts/GolfClubHomicide-51azG.ttf);
+  }
+
+  .absolution {
+      position: absolute;
+      height: 100vh;
+      width: 100vw;
+      /* background-color: #e5e5e5;opacity: 0.8; */
+  }
+  h1 {
+      text-align: center;
+      font-weight: 900;
+      font-size: 2em;
+      line-height: .8em;
+      padding: .2em;
+      border: 5px solid black;
+  }
+  .health-bar-container{
+      /* border:5px solid #ccc;background-color: white; */
+      opacity: 0.7;width: 35%;height: 28px;border-radius: 2px;
+  }
+  .health-bar{
+      color:#000;padding-left:2px;font-size: 15px;background-color:#c54;height: 18px;opacity: 1;
+      font-family: Killer2;
+  }
+  .common-class{
+      margin: 0!important;opacity: 0.8;font-size:40px;background-color: white;font-family: Killer1;
+  }
+  .title{ width: 30%;left:35%; text-align: center;}
+  .health1{left:0}
+  .header-text{
+    margin: 0!important;opacity: 0.8;font-size:40px;color: #cf1313;font-family: Killer2;
+  }
+
+  button {
+    cursor: pointer;
+    outline: none;
+    background-image: linear-gradient(-180deg, #b6a9b1 0%, #5e4c5a 100%);
+    box-shadow: 0 1rem 1.25rem 0 rgba(56, 43, 45, 0.5),
+                0 -0.25rem 1.5rem rgb(97, 87, 87) inset,
+                0 0.75rem 0.5rem rgba(156, 147, 152, 0.4) inset,
+                0 0.25rem 0.5rem 0 rgb(243, 176, 176) inset;
+  }
+
+  button span {
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 2px 2px rgb(91, 87, 92));
+  }
+
+  button::before {
+    content: "";
+    display: block;
+    background: #fff;              
+    opacity: 0.7;
+  }
+
+  button::after {
+    content: "";
+    display: block;
+    background: #fff;
+    filter: blur(1px);
+    opacity: 0.05;
+  }
+  .loader-container{
+    top:70%;
+    /* border:5px solid #ccc;
+    background-color: white; */
+    opacity: 0.7;
+    width: 50%;
+    left:25%;
+    height: 28px;
+    border-radius: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .load-percent{color:#000;padding-left:2px;font-size: 18px;background-color:grey;height: 18px;opacity: 1;
+      font-family: Killer1;width:100%;}
+  .health2{right:0;}
+ 
